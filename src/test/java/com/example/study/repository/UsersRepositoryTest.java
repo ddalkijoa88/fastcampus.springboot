@@ -1,6 +1,7 @@
 package com.example.study.repository;
 
 import com.example.study.StudyApplicationTests;
+import com.example.study.model.entity.Item;
 import com.example.study.model.entity.Users;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -30,11 +31,14 @@ public class UsersRepositoryTest extends StudyApplicationTests {
     }
 
     @Test
+    @Transactional
     public void read(){
-        Optional<Users> user = usersRepository.findById(9L);
+        Optional<Users> user = usersRepository.findByAccount("pengsu1");
         user.ifPresent(selectUser -> {  //테이블에 "9L(long type이므로)"이라는 id가 있다면 가져오라는 의미(해당 id가 없을수도 있기 때문에)
-            System.out.println("user : " + user);
-            System.out.println(selectUser.getEmail());
+            selectUser.getOrderDetailList().stream().forEach(detail ->{
+                Item item = detail.getItem();
+                System.out.println(item);
+            });
         });
 
     }
