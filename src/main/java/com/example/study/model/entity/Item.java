@@ -27,4 +27,5 @@ public class Item {
     //eager type -> 연관관계가 설정된 모든 테이블을 조인(join)해서 검색한다. 데이터 수가 많다면 시간이 많이 걸리거나 원하는 데이터를 가져오지 못할수도 있다.
     //따라서, default type은 lazy이고, 1:1 관계라면 eager를 사용한다
 
+
 }
